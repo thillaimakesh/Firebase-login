@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "259937534629",
+    "firebase_url": "https://login-5b95d.firebaseio.com",
+    "project_id": "login-5b95d",
+    "storage_bucket": "login-5b95d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:259937534629:android:895be8292273cf25",
+        "android_client_info": {
+          "package_name": "com.example.vasanth.login"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "259937534629-k63nklgjptds0io4qcr08bk3crso9d47.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDyiODmnUaXiqyiX0XxXub_IwLg1MPZf5o"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
