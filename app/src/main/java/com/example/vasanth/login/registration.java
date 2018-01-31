@@ -63,7 +63,7 @@ public class registration extends AppCompatActivity {
         userPassword = (EditText)findViewById(R.id.etpassword);
         userEmail = (EditText)findViewById(R.id.etuseremail);
         regbutton= (Button)findViewById(R.id.btnregister);
-        userLogin=(TextView)findViewById(R.id.btnlogin);
+        userLogin=(TextView)findViewById(R.id.tvlogin);
 
     }
     private  Boolean validate()
@@ -73,8 +73,8 @@ public class registration extends AppCompatActivity {
         String password = userPassword.getText().toString();
         String email = userEmail.getText().toString();
 
-        if(name.isEmpty() && password.isEmpty()&& email.isEmpty()){
-            Toast.makeText(this,"pleasw enter all the details",Toast.LENGTH_SHORT).show();
+        if(name.isEmpty() ||  password.isEmpty() || email.isEmpty()){
+            Toast.makeText(this,"please enter all the details",Toast.LENGTH_SHORT).show();
         }
         else{
             result=true;
