@@ -30,8 +30,8 @@ public class registration extends AppCompatActivity {
 
         regbutton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                if (validate()) {
+            public void onClick(View view){
+                if (validate()==true) {
                     String user_email = userEmail.getText().toString().trim();
                     String user_password = userPassword.getText().toString().trim();
                     firebaseAuth.createUserWithEmailAndPassword(user_email,user_password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -41,7 +41,7 @@ public class registration extends AppCompatActivity {
                                 Toast.makeText(registration.this, "registration sucessfull", Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(registration.this, MainActivity.class));
                             } else {
-                                Toast.makeText(registration.this, "registration sucessfull", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(registration.this, "registration failure", Toast.LENGTH_SHORT).show();
                             }
                         }
                     });

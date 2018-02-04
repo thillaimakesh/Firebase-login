@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "259937534629-t49damcfejr28f26fuipotbk3luivaji.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.vasanth.login",
+            "certificate_hash": "e1b690ee5dc67921df20036b5c087f05c45bfe0e"
+          }
+        },
+        {
           "client_id": "259937534629-k63nklgjptds0io4qcr08bk3crso9d47.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -29,8 +37,57 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "259937534629-k63nklgjptds0io4qcr08bk3crso9d47.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:259937534629:android:39c000fcb48fc6d3",
+        "android_client_info": {
+          "package_name": "com.example.vasanth.gogin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "259937534629-v6uoji4hkv5k8uum6qg0p8p2343t05ms.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.vasanth.gogin",
+            "certificate_hash": "e1b690ee5dc67921df20036b5c087f05c45bfe0e"
+          }
+        },
+        {
+          "client_id": "259937534629-k63nklgjptds0io4qcr08bk3crso9d47.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDyiODmnUaXiqyiX0XxXub_IwLg1MPZf5o"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "259937534629-k63nklgjptds0io4qcr08bk3crso9d47.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2

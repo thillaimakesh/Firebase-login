@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView Info;
     private Button Login;
     private int counter = 5;
-    private TextView userregistration;
+    private TextView userRegistration;
     private FirebaseAuth firebaseAuth;
 
     @Override
@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         Password = (EditText) findViewById(R.id.etpassword);
         Info = (TextView) findViewById(R.id.tvinfo);
         Login = (Button) findViewById(R.id.btnlogin);
-        userregistration = (TextView) findViewById(R.id.tvregister);
+        userRegistration = (TextView) findViewById(R.id.tvregister);
         Info.setText("No of attempts remaining : 5");
         firebaseAuth = FirebaseAuth.getInstance();
         FirebaseUser user = firebaseAuth.getCurrentUser();
@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-        userregistration.setOnClickListener(new View.OnClickListener() {
+        userRegistration.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this, registration.class));
