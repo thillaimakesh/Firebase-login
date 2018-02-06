@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText Password;
     private TextView Info;
     private Button Login;
+     private ProgressBar progressBar;
     private int counter = 5;
     private TextView userRegistration;
     private FirebaseAuth firebaseAuth;
@@ -31,6 +32,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        
+        firebaseAuth = FirebaseAuth.getInstance();
+        
+        if (auth.getCurrentUser() != null) {
+            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+            finish();
+        }
+        
         Name = (EditText) findViewById(R.id.etName);
         Password = (EditText) findViewById(R.id.etpassword);
         Info = (TextView) findViewById(R.id.tvinfo);
@@ -38,45 +47,47 @@ public class MainActivity extends AppCompatActivity {
         userRegistration = (TextView) findViewById(R.id.tvregister);
         Info.setText("No of attempts remaining : 5");
         firebaseAuth = FirebaseAuth.getInstance();
-        FirebaseUser user = firebaseAuth.getCurrentUser();
-        if (user != null) {
-            finish();
-            startActivity(new Intent(MainActivity.this, SecondActivity.class));
-        }
+
         Login.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                validate(Name.getText().toString(), Password.getText().toString());
+            public void onClick(View v) {
+                String email = inputEmail.getText().toString();
+                final String password = inputPassword.getText().toString();
 
-            }
-        });
-        userRegistration.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, registration.class));
-            }
-        });
-    }
-
-    private void validate(String userName, String userPassword) {
-        firebaseAuth.signInWithEmailAndPassword(userName, userPassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-
-                if (task.isSuccessful()) {
-                    startActivity(new Intent(MainActivity.this, SecondActivity.class));
-
-                    Toast.makeText(MainActivity.this, "Login SUCESSFULL", Toast.LENGTH_SHORT).show();
-
-                } else {
-                    Toast.makeText(MainActivity.this, "Login Failed", Toast.LENGTH_SHORT).show();
-                    counter--;
-                    Info.setText("no of attempts remaining :" + counter);
-                    if (counter == 0) {
-                        Login.setEnabled(false);
-                    }
+                if (TextUtils.isEmpty(email)) {
+                    Toast.makeText(getApplicationContext(), "Enter email address!", Toast.LENGTH_SHORT).show();
+                    return;
                 }
+
+                if (TextUtils.isEmpty(password)) {
+                    Toast.makeText(getApplicationContext(), "Enter password!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                progressBar.setVisibility(View.VISIBLE);
+
+                //authenticate user
+                auth.signInWithEmailAndPassword(email, password)
+                        .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                // If sign in fails, display a message to the user. If sign in succeeds
+                                // the auth state listener will be notified and logic to handle the
+                                // signed in user can be handled in the listener.
+                                progressBar.setVisibility(View.GONE);
+                                if (!task.isSuccessful()) {
+                                    // there was an error
+                                    if (password.length() < 6) {
+                                        inputPassword.setError(getString(R.string.minimum_password));
+                                    } else {
+                                        Toast.makeText(LoginActivity.this, getString(R.string.auth_failed), Toast.LENGTH_LONG).show();
+                                    }
+                                } else {
+                                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                    startActivity(intent);
+                                    finish();
+                                }
+                            }
+                        });
             }
         });
-    }
-}
