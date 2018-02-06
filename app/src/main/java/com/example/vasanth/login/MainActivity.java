@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView Info;
     private Button Login;
     private int counter = 5;
-    private TextView userRegistration;
+    private TextView userRegistration
     private FirebaseAuth firebaseAuth;
 
     @Override
